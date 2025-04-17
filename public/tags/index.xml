@@ -16,6 +16,13 @@
       <description></description>
     </item>
     <item>
+      <title>Post</title>
+      <link>http://0.0.0.0:1313/tags/post/</link>
+      <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>http://0.0.0.0:1313/tags/post/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Project</title>
       <link>http://0.0.0.0:1313/tags/project/</link>
       <pubDate>Mon, 01 Jan 2024 00:00:00 +0000</pubDate>

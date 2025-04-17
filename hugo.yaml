@@ -22,6 +22,26 @@ params:
       - name: Search
         url: "/search"
 
+    # Search Options
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    # limit: 10 # refer: https://www.fusejs.io/api/methods.html#search
+    keys: ["title", "permalink", "summary", "content", "tags", "post-tags", "tag", "/tags/"]
+
+  # Show reading time in post
+  ShowReadingTime: true
+
+  # Show Table of contents on post
+  TocOpen: true
+
+  # Copy button in markdown code block
+  ShowCodeCopyButtons: true
+
 
   socialIcons: # optional
     - name: "Linkedin"
