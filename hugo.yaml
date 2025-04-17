@@ -1,0 +1,41 @@
+#  Run server with this
+#  hugo server --bind=0.0.0.0 --baseURL=http://0.0.0.0:1313 -D
+
+baseURL: https://blog.gabri0n.cc
+languageCode: en-us
+title: Gabri0n.Blog
+theme: ["PaperMod"]
+
+params:
+  profileMode:
+    enabled: true
+    title: "Gabri0n.Blog" # optional default will be site title
+    subtitle: "IT | Cybersecurity | Homelab"
+    imageUrl: "https://avatars.githubusercontent.com/u/29490060?v=4" # optional
+    imageTitle: "<title of image as alt>" # optional
+    imageWidth: 120 # custom size
+    imageHeight: 120 # custom size
+    buttons:
+      - name: Posts
+        url: "/posts"
+      - name: Projects
+        url: "/projects"
+      - name: Search
+        url: "/search"
+      #- name: Github
+      # url: "https://github.com/Gabri0n"
+
+  socialIcons: # optional
+    - name: "Linkedin"
+      url: "https://www.linkedin.com/in/gmarty2002/"
+    - name: "Github"
+      url: "https://github.com/Gabri0n"
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
+
+
+
