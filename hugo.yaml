@@ -12,7 +12,6 @@ params:
     title: "Gabri0n.Blog" # optional default will be site title
     subtitle: "IT | Cybersecurity | Homelab"
     imageUrl: "https://avatars.githubusercontent.com/u/29490060?v=4" # optional
-    imageTitle: "<title of image as alt>" # optional
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size
     buttons:
@@ -22,8 +21,7 @@ params:
         url: "/projects"
       - name: Search
         url: "/search"
-      #- name: Github
-      # url: "https://github.com/Gabri0n"
+
 
   socialIcons: # optional
     - name: "Linkedin"
