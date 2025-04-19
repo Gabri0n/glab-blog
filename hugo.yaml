@@ -1,7 +1,7 @@
 #  Run server with this
 #  hugo server --bind=0.0.0.0 --baseURL=http://0.0.0.0:1313 -D
 
-baseURL: https://blog.gabri0n.cc
+baseURL: https://gabri0n.cc
 languageCode: en-us
 title: Gabri0n.Blog
 theme: ["PaperMod"]
