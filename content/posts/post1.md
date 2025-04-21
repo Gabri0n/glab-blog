@@ -6,8 +6,7 @@ tags:
   - "IPv4"
   - "IPv6"
 ---
-#DRAFT, STILL IN PROGRESS
-
+# DRAFT, STILL IN PROGRESS
 # Understanding Ipv4 and Ipv6
 After reading this post you will be able to explain what IPv4 and IPv6 addresses are, how they are created, how they are used, and how they, along with the necessary hardware, run the internet. Happy reading!
 
@@ -28,16 +27,16 @@ That's enough history and speculation, lets get into the details!
 First, lets understand how an IPv4 address is created. IPv4 addresses are created out of 4 one to three digit numbers seperated by a decimal with the max value being 255. Here is an example.
 
 <center>
-  
-192.168.1.1
+
+''' 192.168.1.1 '''
 
 </center>
 
 IP addresses are represented in decimal or base 10 format to make them more readable to humans. Computers operate in binary, 1s and 0s. So, the above address when read by a computer actually looks like this.
 
 <center>
-  
-11000000.10101000.00000001.00000001.
+
+''' 11000000.10101000.00000001.00000001 '''
 
 </center>
 
@@ -49,8 +48,8 @@ First, lets do a quick review of number systems. In a base 10 system, which is t
 
 <center>
 
-|Hundreds|Tens|Ones
-|-|-|-|
+|Hundreds|Tens|Ones|
+|:-:|:-:|:-:|
 |1|9|2|
 
 </center>
@@ -119,8 +118,8 @@ Now that we have the columns that define our value, lets place the first section
 To calculate the base 10 value, we add up the value of each column that has a 1 in it. For example, in the above table we can see that there is a 1 in the 128 column and a 1 in the 64 column. Adding together 128 + 64 gives us a value of 192! Go ahead and work out the other 3 sections and you should see that:
 
 <center>
-  
-11000000.10101000.00000001.00000001 base 2 = 192.168.1.1 base 10
+
+''' 11000000.10101000.00000001.00000001 base 2 = 192.168.1.1 base 10 '''
 
 </center>
 
@@ -160,5 +159,3 @@ https://upskilld.com/learn/how-does-ipv4-work/
 https://en.wikipedia.org/wiki/IPv4_address_exhaustion
 https://prefixx.net/news/ipv4-history
 https://www.google.com/intl/en/ipv6/statistics.html#tab=ipv6-adoption
-
-
