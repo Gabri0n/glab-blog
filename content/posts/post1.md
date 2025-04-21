@@ -28,7 +28,7 @@ First, lets understand how an IPv4 address is created. IPv4 addresses are create
 
 <center>
 
-''' 192.168.1.1 '''
+192.168.1.1
 
 </center>
 
@@ -36,7 +36,7 @@ IP addresses are represented in decimal or base 10 format to make them more read
 
 <center>
 
-''' 11000000.10101000.00000001.00000001 '''
+11000000.10101000.00000001.00000001
 
 </center>
 
@@ -119,7 +119,7 @@ To calculate the base 10 value, we add up the value of each column that has a 1 
 
 <center>
 
-''' 11000000.10101000.00000001.00000001 base 2 = 192.168.1.1 base 10 '''
+11000000.10101000.00000001.00000001 base 2 = 192.168.1.1 base 10
 
 </center>
 
