@@ -6,6 +6,13 @@ languageCode: en-us
 title: Gabri0n.Blog
 theme: ["PaperMod"]
 
+# This is to allow HTML rendering in .md files
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+
 params:
   profileMode:
     enabled: true
