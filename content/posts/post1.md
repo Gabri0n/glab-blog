@@ -26,13 +26,19 @@ That's enough history and speculation, lets get into the details!
 ## The Structure of an IPv4 Address
 
 First, lets understand how an IPv4 address is created. IPv4 addresses are created out of 4 one to three digit numbers seperated by a decimal with the max value being 255. Here is an example.
+
 <center>
+  
 192.168.1.1
+
 </center>
 
 IP addresses are represented in decimal or base 10 format to make them more readable to humans. Computers operate in binary, 1s and 0s. So, the above address when read by a computer actually looks like this.
+
 <center>
+  
 11000000.10101000.00000001.00000001.
+
 </center>
 
 Looking at this address you may notice a pattern, each section is exactly 8 digits long. Technically speaking each section is 8 bits long with a bit being either a 1 or 0. These 8 bits form what is called a byte. So overall IP addresses are 4 bytes or 32 bits in size. 
@@ -113,7 +119,9 @@ Now that we have the columns that define our value, lets place the first section
 To calculate the base 10 value, we add up the value of each column that has a 1 in it. For example, in the above table we can see that there is a 1 in the 128 column and a 1 in the 64 column. Adding together 128 + 64 gives us a value of 192! Go ahead and work out the other 3 sections and you should see that:
 
 <center>
+  
 11000000.10101000.00000001.00000001 base 2 = 192.168.1.1 base 10
+
 </center>
 
 
