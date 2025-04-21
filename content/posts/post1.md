@@ -1,14 +1,15 @@
 ---
-title: "My First Post"
-date: 2024-01-01
-summary: "A short summary of my awesome Post."
+title: "Understanding Ipv4 and Ipv6"
+date: 2025-04-21
+summary: "An overview of IPv4 and IPv6"
 tags:
-  - "Post"
-  - "go"
+  - "IPv4"
+  - "IPv6"
 ---
-# DRAFT, STILL IN PROGRESS
+#DRAFT, STILL IN PROGRESS
 
 # Understanding Ipv4 and Ipv6
+After reading this post you will be able to explain what IPv4 and IPv6 addresses are, how they are created, how they are used, and how they, along with the necessary hardware, run the internet. Happy reading!
 
 ## A Brief History
 
@@ -22,14 +23,102 @@ The truth is that when IPv4 was created in 1983 it was supposed to be like the I
 
 That's enough history and speculation, lets get into the details!
 
-## How Does IPv4 Work?
+## The Structure of an IPv4 Address
 
 First, lets understand how an IPv4 address is created. IPv4 addresses are created out of 4 one to three digit numbers seperated by a decimal with the max value being 255. Here is an example.
 <center>
 192.168.1.1
 </center>
 
+IP addresses are represented in decimal or base 10 format to make them more readable to humans. Computers operate in binary, 1s and 0s. So, the above address when read by a computer actually looks like this.
+<center>
+11000000.10101000.00000001.00000001.
+</center>
 
+Looking at this address you may notice a pattern, each section is exactly 8 digits long. Technically speaking each section is 8 bits long with a bit being either a 1 or 0. These 8 bits form what is called a byte. So overall IP addresses are 4 bytes or 32 bits in size. 
+
+So how does the human readable address represented in decimal/base 10 go to the computer readable address represented in binary/base 2? 
+
+First, lets do a quick review of number systems. In a base 10 system, which is the numbering system we use everyday, there are 10 digits that can be used to represent a value, these digits are 0-9. The value of a number is read based on the position of each digit in columns. For example the number 192 is read as one hundred and ninety two.
+
+<center>
+
+|Hundreds|Tens|Ones
+|-|-|-|
+|1|9|2|
+
+</center>
+
+The value of each column is created by calculating 10 to the power of X. So to get the three columns needed to represent 192 we would do 10^0 = 1 (ones), 10^1 = 10 (tens), and 10^2 = 100 (Hundreds).
+
+With these columns we can break down the value of 192. The digit 1 is held in the hundreds column, the digit 9 in the Tens column, and the digit 2 in the Ones column. Thus creating the value 192 or one hundred and ninety two.
+
+Using this knowledge how does this work in binary? In a binary system, also known as base 2, there exists only 2 values being a 1 or a 0. Representing 1 or 0 in binary is very easy as it can just be shown as 1 or 0! Expressing numbers above this though requires some math. In the base 10 system the columns that represent a digits value is expressed as Ones, Tens, Hundreds etc... In a base 2 system however we would use 2 to the power of X to define our columns.
+<center>
+<table>
+  <tr>
+    <th>Function</th>
+    <td>2^7</td>
+    <td>2^6</td>
+    <td>2^5</td>
+    <td>2^4</td>
+    <td>2^3</td>
+    <td>2^2</td>
+    <td>2^1</td>
+    <td>2^0</td>
+  </tr>
+  <tr>
+    <th>Value</th>
+    <td>128</td>
+    <td>64</td>
+    <td>32</td>
+    <td>16</td>
+    <td>8</td>
+    <td>4</td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+</table>
+</center>
+
+Now that we have the columns that define our value, lets place the first section of our binary address in the table.
+
+<center>
+<table>
+  <tr>
+    <th>Value</th>
+    <td>128</td>
+    <td>64</td>
+    <td>32</td>
+    <td>16</td>
+    <td>8</td>
+    <td>4</td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+    <tr>
+    <th>Binary</th>
+    <td>1</td>
+    <td>1</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+    <td>0</td>
+  </tr>
+</table>
+</center>
+
+To calculate the base 10 value, we add up the value of each column that has a 1 in it. For example, in the above table we can see that there is a 1 in the 128 column and a 1 in the 64 column. Adding together 128 + 64 gives us a value of 192! Go ahead and work out the other 3 sections and you should see that:
+
+<center>
+11000000.10101000.00000001.00000001 base 2 = 192.168.1.1 base 10
+</center>
+
+
+
+## How Does IPv4 Work?
 
 IPv4 operates at the network layer (Layer 3) in the OSI model providing 2 specific features: 
 1. Logical Addressing
@@ -60,6 +149,8 @@ here
 here
 
 https://upskilld.com/learn/how-does-ipv4-work/
-
+https://en.wikipedia.org/wiki/IPv4_address_exhaustion
+https://prefixx.net/news/ipv4-history
+https://www.google.com/intl/en/ipv6/statistics.html#tab=ipv6-adoption
 
 
