@@ -55,6 +55,8 @@ params:
       url: "https://www.linkedin.com/in/gmarty2002/"
     - name: "Github"
       url: "https://github.com/Gabri0n"
+    - name: "Bluesky"
+      url: "https://bsky.app/profile/gabri0n.cc"
 
 outputs:
   home:
