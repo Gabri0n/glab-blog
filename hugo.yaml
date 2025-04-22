@@ -18,7 +18,7 @@ params:
     enabled: true
     title: "Gabri0n.Blog" # optional default will be site title
     subtitle: "IT | Cybersecurity | Homelab"
-    imageUrl: "https://avatars.githubusercontent.com/u/29490060?v=4" # optional
+    imageUrl: "https://media.licdn.com/dms/image/v2/C4D03AQGsAWIspnnCnA/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1645171115162?e=1750896000&v=beta&t=sxIX_M-H1F_kTyCBa0Py4EiAubCJD9kofQyDFi-ltsE" # optional
     imageWidth: 120 # custom size
     imageHeight: 120 # custom size
     buttons:
