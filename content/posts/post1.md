@@ -1,3 +1,4 @@
+
 ---
 title: "Understanding Ipv4 and Ipv6"
 date: 2025-04-21
@@ -24,7 +25,7 @@ That's enough history and speculation, lets get into the details!
 
 ## The Structure of an IPv4 Address
 
-First, lets understand how an IPv4 address is created. IPv4 addresses are created out of 4 one to three digit numbers seperated by a decimal with the max value being 255. Here is an example.
+First, lets understand how an IPv4 address is created. IPv4 addresses are created out of 4 one to three digit numbers seperated by a decimal with a max value of 255. Here is an example.
 
 <center>
 
@@ -123,23 +124,71 @@ To calculate the base 10 value, we add up the value of each column that has a 1 
 
 </center>
 
+Now that we can create addresses were good to go right! Well, almost. Were still missing a few concepts. Enter IP classes and subnets to save the day. 
+
+
+## IP Classes and sub-netting? 
+
+Say a university wants to connect 3 devices to the internet. They would contact IANA (Internet Assigned Numbers Authority) who are responsible for controlling how IP addresses are handed out. The IANA would then assign them 123.123.123.1, 123.123.123.2, and 123.123.123.3 as an example. Now, what if some time in the future the university wants to add more devices or even remove some? Suddenly our nice neat consecutive address numbers are ruined! The next address in line could be 456.456.456.9! and if they chose to remove a device that address would get assigned to someone else. Imagine keeping track of 4.3 billion numbers randomly assigned with no particular pattern. 
+
+In order to maintain some form of order addresses are not handed out singleton but in blocks of multiple. This way when an organization needs some addresses they can be handed a block of a couple hundred consecutive addresses, much easier to track while giving them room to grow or shrink.
+
+Yet, what if one organization only needed 10 addresses and another one needed 1000? We could make every block 10 addresses but then we would need to assign 100 blocks to satisfy the requirement of 1000. On the other hand if we make the blocks 1000 addresses then 990 address will have gone to waste that other people could use. With addresses being a finite resource there needed to be a way to more efficiently use the address space. 
+
+Thus IP classes and subnetting were created. In order to ensure IP addresses didnt go to waste IP addresses from 0.0.0.0 to 255.255.255.255 were divided into 5 Classes named A to E. Classes D and E are reserved for special cases so we wont focus on those. Classes A to C are the main 3 classes.
+
+<center>
+
+Class A ip addresses reside in the range of 0.0.0.0 to 127.255.255.255
+Class B ip addresses reside in the range of 128.0.0.0 to 191.255.255.255
+Class C ip addresses reside in the range of 192.0.0.0 to 223.255.255.255
+
+</center>
+
+Each of these classes can then be split down further into smaller blocks with a process called sub-netting. Lets start with Class C as an example. Sub-netting allows you to split a block of addresses into further blocks by using a new address called a sub-net mask. Below is an example of a Class C address followed by the Class C sub-net mask.
+
+<center>
+
+192.168.1.1  255.255.255.0
+
+</center>
+
+Notice that the subnet mask has the value 255 in the first 3 spaces but 0 in the last? Each space containing a number other than 0 (usually 255) is what defines the network address. Since the first 3 spaces contain 255 that means that the network address is 192.168.1.0.
+
+In a network, the network address stays the same. The only value that changes is the space not covered by the subnet mask which is known as the Host address. The host address is what is assigned to each device you want to connect together in your network. You can visualize better vsualize it like this N.N.N.H where N represents what belongs to the network address and H represents what belongs to the host address.
+
+If i wanted to create a class C network containing 3 devices using the 192.168.1.0 addresses using a mask of 255.255.255.0 I would assign the devices as follows:
+
+<center>
+  
+192.168.1.1, 192.168.1.2, and 192.168.1.3
+
+</center>
+
+Each device belongs to the 192.168.1.0 network and is defined by the host address 1, 2, and 3. Also, remember when i mentioned that IP addresses can only have a maximum value of 255? Well since the subnet mask only leaves the last section of the IP for the host address there can only be a maximum of 254 hosts on the network. But wait! 254 does not equal 255! Thats true, all you need to know for now is that .0 is reserved as the network address and .255 is reserved as the broadcast address and cant be used. These terms will be explained later.
+
+Class A and B addresses work the same, the only difference being the IP range and the subnet mask. I've created a table with all the information you need to know.
+
+<center>
+
+|Class|Range|Subnet|Network/Host|Amount of Addresses|
+|:-:|:-:|:-:|:-:|:-:|
+|A|0.0.0.0 - 127.255.255.255 | 255.0.0.0| N.H.H.H|16,777,214|
+|B|128.0.0.0 - 191.255.255.255| 255.255.0.0| N.N.H.H|65,534|
+|C|192.0.0.0 - 223.255.255.255| 255.255.255.0|N.N.N.H|254|
+
+</center>
+
+Networks with subnets can be expressed in CIDR notation with a /. For example, a network with the address 192.168.1.0 with a mask of 255.255.255.0 can be written as 192.168.1.0/24. the number after the slash is derived from the amount of 1s in the binary form of the subnet mask. 255.255.255.0 = 11111111.11111111.11111111.00000000 which is 24 ones.
+
 
 
 ## How Does IPv4 Work?
 
-IPv4 operates at the network layer (Layer 3) in the OSI model providing 2 specific features: 
-1. Logical Addressing
-2. Packet Routing
+Now that we understand how IPv4 addresses are formed, lets go into how they are used!
 
-**Logical Addressing** means the ability to assign IP addresses to devices based on the needs of the network. For example, when the city is building a new sub division of houses they must decide the name of the street and the house numbering scheme to be used. Digitally this allows administrators to create networks designed around specific topological and business needs, assigning addresses as they see fit.
 
-IP addressing is just a digital version of postal addressing. For example, when sending a letter through mail you would specify the mailing address of the recipient and include your address as the sender. The letter is then delivered to the postal office where they decide which route the package should take to get to the specified address. The letter is then sent to the recipient after which they can reply using the sender address you specified. IP addressing provides a way to identify where/who to send the data, and where/who to reply to upon receiving the data
 
-**Packet Routing** would be the post office in the above example. When the letter arrives at the post office they look at the information contained on the envelop which is the address in which the letter is addressed to. Based on this information the post office will move the letter to the necessary bin which will be collected by a delivery truck and then delivered to the recipient. When data is sent on a network, based on the destination address, the data will take the needed path to reach its destination. 
-
-When sending a letter across the world however it may need to travel between multiple post offices and facilities to reach its destination. Digitally the same thing happens, the data is routed across multiple networks each one directing the data as needed for it to reach its destination.
-
-Now that we have a high level understanding of IPv4 lets see how it is utilized.
 
 
 
@@ -159,3 +208,6 @@ https://upskilld.com/learn/how-does-ipv4-work/
 https://en.wikipedia.org/wiki/IPv4_address_exhaustion
 https://prefixx.net/news/ipv4-history
 https://www.google.com/intl/en/ipv6/statistics.html#tab=ipv6-adoption
+https://www.meridianoutpost.com/resources/articles/IP-classes.php
+https://www.networkacademy.io/ccna/ip-subnetting/why-do-we-need-ip-subnetting
+
