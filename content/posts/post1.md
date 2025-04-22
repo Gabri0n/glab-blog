@@ -8,7 +8,6 @@ tags:
   - "IPv6"
 ---
 # DRAFT, STILL IN PROGRESS
-# Understanding Ipv4 and Ipv6
 After reading this post you will be able to explain what IPv4 and IPv6 addresses are, how they are created, how they are used, and how they, along with the necessary hardware, run the internet. Happy reading!
 
 ## A Brief History
@@ -127,7 +126,7 @@ To calculate the base 10 value, we add up the value of each column that has a 1 
 Now that we can create addresses were good to go right! Well, almost. Were still missing a few concepts. Enter IP classes and subnets to save the day. 
 
 
-## IP Classes and sub-netting? 
+## IP Classes and sub-netting 
 
 Say a university wants to connect 3 devices to the internet. They would contact IANA (Internet Assigned Numbers Authority) who are responsible for controlling how IP addresses are handed out. The IANA would then assign them 123.123.123.1, 123.123.123.2, and 123.123.123.3 as an example. Now, what if some time in the future the university wants to add more devices or even remove some? Suddenly our nice neat consecutive address numbers are ruined! The next address in line could be 456.456.456.9! and if they chose to remove a device that address would get assigned to someone else. Imagine keeping track of 4.3 billion numbers randomly assigned with no particular pattern. 
 
@@ -135,15 +134,19 @@ In order to maintain some form of order addresses are not handed out singleton b
 
 Yet, what if one organization only needed 10 addresses and another one needed 1000? We could make every block 10 addresses but then we would need to assign 100 blocks to satisfy the requirement of 1000. On the other hand if we make the blocks 1000 addresses then 990 address will have gone to waste that other people could use. With addresses being a finite resource there needed to be a way to more efficiently use the address space. 
 
-Thus IP classes and subnetting were created. In order to ensure IP addresses didnt go to waste IP addresses from 0.0.0.0 to 255.255.255.255 were divided into 5 Classes named A to E. Classes D and E are reserved for special cases so we wont focus on those. Classes A to C are the main 3 classes.
+Thus IP classes and subnetting were created! 
 
-<center>
+---
+
+In order to ensure IP addresses didnt go to waste IP addresses from 0.0.0.0 to 255.255.255.255 were divided into 5 Classes named A to E. Classes D and E are reserved for special cases so we wont focus on those. Classes A to C are the main 3 classes.
+
+
 
 Class A ip addresses reside in the range of 0.0.0.0 to 127.255.255.255
 Class B ip addresses reside in the range of 128.0.0.0 to 191.255.255.255
 Class C ip addresses reside in the range of 192.0.0.0 to 223.255.255.255
 
-</center>
+
 
 Each of these classes can then be split down further into smaller blocks with a process called sub-netting. Lets start with Class C as an example. Sub-netting allows you to split a block of addresses into further blocks by using a new address called a sub-net mask. Below is an example of a Class C address followed by the Class C sub-net mask.
 
@@ -160,7 +163,7 @@ In a network, the network address stays the same. The only value that changes is
 If i wanted to create a class C network containing 3 devices using the 192.168.1.0 addresses using a mask of 255.255.255.0 I would assign the devices as follows:
 
 <center>
-  
+
 192.168.1.1, 192.168.1.2, and 192.168.1.3
 
 </center>
@@ -169,27 +172,32 @@ Each device belongs to the 192.168.1.0 network and is defined by the host addres
 
 Class A and B addresses work the same, the only difference being the IP range and the subnet mask. I've created a table with all the information you need to know.
 
-<center>
-
 |Class|Range|Subnet|Network/Host|Amount of Addresses|
-|:-:|:-:|:-:|:-:|:-:|
-|A|0.0.0.0 - 127.255.255.255 | 255.0.0.0| N.H.H.H|16,777,214|
-|B|128.0.0.0 - 191.255.255.255| 255.255.0.0| N.N.H.H|65,534|
-|C|192.0.0.0 - 223.255.255.255| 255.255.255.0|N.N.N.H|254|
+|-|-|-|-|-|
+|A|0.0.0.0 - 127.255.255.255 | 255.0.0.0| N.H.H.H|16,777,214
+|B|128.0.0.0 - 191.255.255.255| 255.255.0.0| N.N.H.H|65,534
+|C|192.0.0.0 - 223.255.255.255| 255.255.255.0|N.N.N.H|254
 
-</center>
 
-Networks with subnets can be expressed in CIDR notation with a /. For example, a network with the address 192.168.1.0 with a mask of 255.255.255.0 can be written as 192.168.1.0/24. the number after the slash is derived from the amount of 1s in the binary form of the subnet mask. 255.255.255.0 = 11111111.11111111.11111111.00000000 which is 24 ones.
 
+Networks  can also be expressed in CIDR notation. For example, a network with the address 192.168.1.0 with a mask of 255.255.255.0 can be written as 192.168.1.0/24. the number after the slash is derived from the amount of 1s in the binary form of the subnet mask. 255.255.255.0 = 11111111.11111111.11111111.00000000 which is 24 ones.
+
+## Quick Recap
+
+What have we learned so far? 
+
+1. IP addresses are 32 bits/4 bytes in length
+2. Made up of four sections of three digits separated by decimals 
+3. Each section can range from 0-255 in value
+4. There are 5 IP classes A-E. ABC are typically used. DE are special.
+5. Can be split into different network sizes using subnetting
+
+This would be a great point to to take a break and internalize the information or go back and re-read anything you're not sure of!
 
 
 ## How Does IPv4 Work?
 
-Now that we understand how IPv4 addresses are formed, lets go into how they are used!
-
-
-
-
+Now that we have the fundamentals out of the way. How are IPv4 address actually used to create what we know as the internet.
 
 
 ## The Issues of IPv4
