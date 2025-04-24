@@ -195,9 +195,9 @@ Lets start with an easy example, say we wanted to network two computers together
 
 ```goat
 
-+--------------+                   		+--------------+
-| Computer A |-------------------| Computer B |
-+--------------+                  		+--------------+
++--------------+                   +--------------+
+|  Computer A  |-------------------|  Computer B  |
++--------------+                   +--------------+
 
 ```
 
