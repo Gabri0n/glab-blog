@@ -193,10 +193,13 @@ Now that we have the fundamentals out of the way. How are IPv4 address actually 
 
 Lets start with an easy example, say we wanted to network two computers together directly. Two desktops connected through an Ethernet cable.
 
+'''goat
+
 +--------------+                   		+--------------+
 | Computer A |-------------------| Computer B |
 +--------------+                  		+--------------+
 
+'''
 
 ## The Issues of IPv4
 here
