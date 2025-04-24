@@ -1,4 +1,5 @@
 
+
 ---
 title: "Understanding Ipv4 and Ipv6"
 date: 2025-04-21
@@ -134,11 +135,9 @@ In order to maintain some form of order addresses are not handed out singleton b
 
 Yet, what if one organization only needed 10 addresses and another one needed 1000? We could make every block 10 addresses but then we would need to assign 100 blocks to satisfy the requirement of 1000. On the other hand if we make the blocks 1000 addresses then 990 address will have gone to waste that other people could use. With addresses being a finite resource there needed to be a way to more efficiently use the address space. 
 
-Thus IP classes and subnetting were created! 
-
 ---
 
-In order to ensure IP addresses didnt go to waste IP addresses from 0.0.0.0 to 255.255.255.255 were divided into 5 Classes named A to E. Classes D and E are reserved for special cases so we wont focus on those. Classes A to C are the main 3 classes.
+In order to ensure IP addresses didnt go to waste IP addresses were first divided into 5 Classes named A to E. Classes D and E are reserved for special cases so we wont focus on those. Classes A to C are the main three classes.
 
 
 
@@ -152,23 +151,16 @@ Each of these classes can then be split down further into smaller blocks with a 
 
 <center>
 
-192.168.1.1  255.255.255.0
+192.168.1.1 
+ 255.255.255.0
 
 </center>
 
-Notice that the subnet mask has the value 255 in the first 3 spaces but 0 in the last? Each space containing a number other than 0 (usually 255) is what defines the network address. Since the first 3 spaces contain 255 that means that the network address is 192.168.1.0.
+Notice that the subnet mask has the value 255 in the first 3 sections but 0 in the last? Each space containing a number other than 0 (usually 255) is what defines the network address. Since the first 3 spaces contain 255 that means that the network address is 192.168.1.0.
 
-In a network, the network address stays the same. The only value that changes is the space not covered by the subnet mask which is known as the Host address. The host address is what is assigned to each device you want to connect together in your network. You can visualize better vsualize it like this N.N.N.H where N represents what belongs to the network address and H represents what belongs to the host address.
+In a network, the network address stays the same. The only value that changes is the space not covered by the subnet mask which is known as the Host address. The host address is what is assigned to each device you want to connect together in your network. You can better visualize it like this, N.N.N.H where N represents what belongs to the network address and H represents what belongs to the host address.
 
-If i wanted to create a class C network containing 3 devices using the 192.168.1.0 addresses using a mask of 255.255.255.0 I would assign the devices as follows:
-
-<center>
-
-192.168.1.1, 192.168.1.2, and 192.168.1.3
-
-</center>
-
-Each device belongs to the 192.168.1.0 network and is defined by the host address 1, 2, and 3. Also, remember when i mentioned that IP addresses can only have a maximum value of 255? Well since the subnet mask only leaves the last section of the IP for the host address there can only be a maximum of 254 hosts on the network. But wait! 254 does not equal 255! Thats true, all you need to know for now is that .0 is reserved as the network address and .255 is reserved as the broadcast address and cant be used. These terms will be explained later.
+Remember when we mentioned that IP addresses can only have a maximum value of 255? Well since the subnet mask of a Class C network only leaves the last section of the IP for the host address there can only be a maximum of 254 hosts on the network. But wait! 254 does not equal 255! Thats true, all you need to know for now is that .0 is reserved as the network address and .255 is reserved as the broadcast address and cant be used. These terms will be explained later.
 
 Class A and B addresses work the same, the only difference being the IP range and the subnet mask. I've created a table with all the information you need to know.
 
@@ -178,9 +170,9 @@ Class A and B addresses work the same, the only difference being the IP range an
 |B|128.0.0.0 - 191.255.255.255| 255.255.0.0| N.N.H.H|65,534
 |C|192.0.0.0 - 223.255.255.255| 255.255.255.0|N.N.N.H|254
 
+Networks  can also be expressed in CIDR notation. For example, a network with the address 192.168.1.0 with a mask of 255.255.255.0 can be written as 192.168.1.0/24. The number after the slash is derived from the amount of 1s in the binary form of the subnet mask. 255.255.255.0 = 11111111.11111111.11111111.00000000 which is 24 ones.
 
-
-Networks  can also be expressed in CIDR notation. For example, a network with the address 192.168.1.0 with a mask of 255.255.255.0 can be written as 192.168.1.0/24. the number after the slash is derived from the amount of 1s in the binary form of the subnet mask. 255.255.255.0 = 11111111.11111111.11111111.00000000 which is 24 ones.
+You should also know that these networks can be broken down even further into smaller sub-networks with a technique called VLSM however that can be an entire post on its own so I wont be covering it here. 
 
 ## Quick Recap
 
@@ -197,7 +189,13 @@ This would be a great point to to take a break and internalize the information o
 
 ## How Does IPv4 Work?
 
-Now that we have the fundamentals out of the way. How are IPv4 address actually used to create what we know as the internet.
+Now that we have the fundamentals out of the way. How are IPv4 address actually used to create what we know as the internet?
+
+Lets start with an easy example, say we wanted to network two computers together directly. Two desktops connected through an Ethernet cable.
+
++--------------+                   		+--------------+
+| Computer A |-------------------| Computer B |
++--------------+                  		+--------------+
 
 
 ## The Issues of IPv4
@@ -218,4 +216,3 @@ https://prefixx.net/news/ipv4-history
 https://www.google.com/intl/en/ipv6/statistics.html#tab=ipv6-adoption
 https://www.meridianoutpost.com/resources/articles/IP-classes.php
 https://www.networkacademy.io/ccna/ip-subnetting/why-do-we-need-ip-subnetting
-
