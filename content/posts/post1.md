@@ -1,18 +1,18 @@
 
 
+
 ---
 title: "Understanding IPv4 Networking"
 date: 2025-04-21
-summary: "An overview of IPv4 and IPv6"
+summary: "An overview of IPv4"
 tags:
   - "IPv4"
-  - "IPv6"
 ---
 # DRAFT, STILL IN PROGRESS
 After reading this post you will be able to explain what IPv4 and IPv6 addresses are, how they are created, how they are used, and how they, along with the necessary hardware, run the internet. Happy reading!
 
 ## A Brief History
-
+---
 January 1st, 1983, the day that ARPANET transitioned from NCP to the new TCP/IP standard setting in motion a system of global connectivity and communication. It allowed for nearly 4.3 billion publicly routable addresses. Its use would continue to grow until January 31, 2011, in which the last remaining IPv4 addresses were allocated from the remaining address pools. From that point onward no more public IPv4 addresses could be handed out and the internet had reached its peak size of 4,294,967,296 public devices with dedicated addresses. 
 
 Fortunately the IETF (Internet Engineering Task Force) saw this coming and in 1998 presented a new standard for TCP/IP addressing called IPv6. This new standard would provide 340 undecillion addresses! That is 3.4 x 10 ^ 38! More than double the estimated amount of grains of sand on the entire planet (10 ^ 18). Not only did it allow for more addresses but it completely removed the need for systems like NAT thus simplifying and speeding up the internet. 
@@ -24,7 +24,7 @@ The truth is that when IPv4 was created in 1983 it was supposed to be like the I
 That's enough history and speculation, lets get into the details!
 
 ## The Structure of an IPv4 Address
-
+---
 First, lets understand how an IPv4 address is created. IPv4 addresses are created out of 4 one to three digit numbers seperated by a decimal with a max value of 255. Here is an example.
 
 <center>
@@ -124,11 +124,11 @@ To calculate the base 10 value, we add up the value of each column that has a 1 
 
 </center>
 
-Now that we can create addresses were good to go right! Well, almost. Were still missing a few concepts. Enter IP classes and subnets to save the day. 
+Now that we can create addresses were good to go right! Well, almost. Were still missing a few concepts.  
 
 
 ## IP Classes and sub-netting 
-
+---
 Say a university wants to connect 3 devices to the internet. They would contact IANA (Internet Assigned Numbers Authority) who are responsible for controlling how IP addresses are handed out. The IANA would then assign them 123.123.123.1, 123.123.123.2, and 123.123.123.3 as an example. Now, what if some time in the future the university wants to add more devices or even remove some? Suddenly our nice neat consecutive address numbers are ruined! The next address in line could be 456.456.456.9! and if they chose to remove a device that address would get assigned to someone else. Imagine keeping track of 4.3 billion numbers randomly assigned with no particular pattern. 
 
 In order to maintain some form of order addresses are not handed out singleton but in blocks of multiple. This way when an organization needs some addresses they can be handed a block of a couple hundred consecutive addresses, much easier to track while giving them room to grow or shrink.
@@ -158,6 +158,7 @@ Each of these classes can then be split down further into smaller blocks with a 
 
 Notice that the subnet mask has the value 255 in the first 3 sections but 0 in the last? Each space containing a number other than 0 (usually 255) is what defines the network address. Since the first 3 spaces contain 255 that means that the network address is 192.168.1.0.
 
+
 In a network, the network address stays the same. The only value that changes is the space not covered by the subnet mask which is known as the Host address. The host address is what is assigned to each device you want to connect together in your network. You can better visualize it like this, N.N.N.H where N represents what belongs to the network address and H represents what belongs to the host address.
 
 Remember when we mentioned that IP addresses can only have a maximum value of 255? Well since the subnet mask of a Class C network only leaves the last section of the IP for the host address there can only be a maximum of 254 hosts on the network. But wait! 254 does not equal 255! Thats true, all you need to know for now is that .0 is reserved as the network address and .255 is reserved as the broadcast address and cant be used. These terms will be explained later.
@@ -174,9 +175,12 @@ Networks  can also be expressed in CIDR notation. For example, a network with th
 
 You should also know that these networks can be broken down even further into smaller sub-networks with a technique called VLSM however that can be an entire post on its own so I wont be covering it here. 
 
-## Quick Recap
+## The Issues of IPv4
+here
 
-What have we learned so far? 
+## Quick Recap
+---
+What have we learned? 
 
 1. IP addresses are 32 bits/4 bytes in length
 2. Made up of four sections of three digits separated by decimals 
@@ -186,45 +190,8 @@ What have we learned so far?
 
 This would be a great point to to take a break and internalize the information or go back and re-read anything you're not sure of!
 
-
-## Basic Networking
-
-Now that we have the IPv4 address fundamentals out of the way. Lets jump into networking and how the TCP/IP stack is used to connect device together.
-
-### Basic Connectivity
-
-Lets start with an easy example, say we wanted to network two computers together directly. Two desktops connected through an Ethernet cable.
-```goat
-+--------------+                   +--------------+
-|  Computer A  |-------------------|  Computer B  |
-+--------------+                   +--------------+
-```
-First we would need to decide the IP range we would want. Lets use a Class C network address of 192.168.1.0. This will alot us 254 addresses, definitely overkill but it will work for our example. Since we are only networking two devices directly we would want to statically assign them each an address. A Static address is one that is set on the system itself and doesn't change. We can assign computer A 192.168.1.1/24 and computer B 192.168.1.2/24. Now if computer A wants to reach computer B it would do so by contacting 192.168.1.1.
-
-### Multi-Device Networks
-Connecting 2 computers together is easy, but what if we want to have more than 2? Well the same process would apply except instead of connecting each device directly to one another a device called a switch would be used. For now all you need to know is that switches allow multiple devices to connect to the same network. Each device would connect to the switch and an IP address would be statically assigned to each.
-
-``` goat
-
-```
-
-So far we have been statically assigning IPv4 addresses. This requires going to each device and manually configuring them. In networks with hundreds of device having to manually assign each an IP address would take far to long and be very difficult to manage adding and removing devices. To make assigning addresses easier we use whats called DHCP or Dynamic Host Configuration Protocol. DHCP is a protocol that allows devices on a network to automatically be assigned an IP address from a DHCP server. This is known as a dynamic assignment and allows for devices to easily be added and removed without manual interaction. 
-
-### Inter-network Communication
-
-
-
-## The Issues of IPv4
-here
-
-## How Does IPv6 Work?
-here
-
-## Why IPv6 Adoption Has Been Slow
-here
-
 ## Sources
-here
+---
 
 https://upskilld.com/learn/how-does-ipv4-work/
 https://en.wikipedia.org/wiki/IPv4_address_exhaustion
