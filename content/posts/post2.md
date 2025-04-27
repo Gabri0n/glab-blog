@@ -37,11 +37,11 @@ Each device would connect to the switch and an IP address would be statically as
 +--------------+         +--------+        +--------------+
 |  Computer A  |-------- | Switch |--------|  Computer C  |
 +--------------+         +--------+        +--------------+
-															|
-															|
-											 +------------+
-											 | Computer B |
-											 +------------+
+                             |
+                             |
+                       +------------+
+                       | Computer B |
+                       +------------+
 ```
 
 So far we have been statically assigning IPv4 addresses. This requires going to each device and manually configuring them. In networks with hundreds of device having to manually assign each an IP address would take far to long and be very difficult to manage adding and removing devices. To make assigning addresses easier we use whats called DHCP or Dynamic Host Configuration Protocol. DHCP is a protocol that allows devices on a network to automatically be assigned an IP address from a DHCP server. This is known as a dynamic assignment and allows for devices to easily be added and removed without manual interaction. 
