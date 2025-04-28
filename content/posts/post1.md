@@ -1,6 +1,7 @@
 
 
 
+
 ---
 title: "Understanding IPv4 Networking"
 date: 2025-04-21
@@ -176,7 +177,26 @@ Networks  can also be expressed in CIDR notation. For example, a network with th
 You should also know that these networks can be broken down even further into smaller sub-networks with a technique called VLSM however that can be an entire post on its own so I wont be covering it here. 
 
 ## The Issues of IPv4
-here
+---
+The biggest issue faced with IPv4 is the exhaustion of its address space. IPv4 allows for 4.3 billion publicly routable addresses. However by January 31, 2011 every possible IP address has been assigned and no new public addresses could be given out. We would have used up the IPv4 address space sooner if it wasn't for a concept called NAT and the private address space.
+
+The private address space is a range of addresses designated for private use and are not allowed to be used publicly. This allows for a range of IP addresses that can be reused by every organization for their private networks without it having to use up public addresses. Below is a table of the private IP ranges for each IP Class.
+
+<center>
+
+|Class|Range|
+|:-:|:-:|
+|A|10.0.0.0 - 10.255.255.255
+|B|172.16.0.0 - 172.31.255.255
+|C|192.168.0.0 - 192.168.255.255
+
+</center>
+
+The question now is if there are multiple devices in the world with the same private IP how do you know where to send your data? This problem is solved by NAT or Network Address Translation. NAT makes it so only 1 public IP address needs to be given to an organization rather than an address for every device in said organization.  It accomplishes this by making it appear as if all traffic from any private IPv4 address is coming from the public IPv4 address. 
+
+NAT is typically performed by routers/gateways. One side would connect to the internet and would be assigned the public IP address while the other side would have a private IP address and be connected to the organizations private network. When a device needs to connect to the internet all its traffic will pass through the Router/Gateway which will swap the private IP for its public IP. The same applies in reverse, when traffic is coming back it will swap the destination of the public IP to the private IP and forward it to the correct device. There is alot more happening under the hood but once again its too much to cover here and will get a post of its own.
+
+While the private address space and NAT are solutions to the IP address exhaustion problem it introduces  complexity and overhead needing to translate addresses between public and private. The internet was designed to function with each device having its own unique address. Luckily the IETF saw this coming and created a new standard of IP address called IPv6 which allows for 3.4 x 10^38 addresses!
 
 ## Quick Recap
 ---
@@ -186,7 +206,13 @@ What have we learned?
 2. Made up of four sections of three digits separated by decimals 
 3. Each section can range from 0-255 in value
 4. There are 5 IP classes A-E. ABC are typically used. DE are special.
-5. Can be split into different network sizes using subnetting
+5. Can be split into different network sizes using sub-netting
+
+What are the problems with IPV4?
+
+1. Not enough addresses 
+2. Requires private address space and NAT to function
+3. NAT adds complexity and overhead to translate public and private addresses
 
 This would be a great point to to take a break and internalize the information or go back and re-read anything you're not sure of!
 
